@@ -1,10 +1,5 @@
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import { useSafeAppsSDK } from '@safe-global/safe-apps-react-sdk'
-import Web3 from 'web3'
-import counterABI from './TestABis/counter.json'
-import messageABI from './TestABis/message.json'
-const provider = new Web3.providers.HttpProvider('https://eth-goerli.g.alchemy.com/v2/Dn8U2J-wzWwQM3EqLryCVFloK9H8OY5q')
-const web3 = new Web3(provider)
 const SafeApp = (): JSX.Element => {
   const { sdk, safe } = useSafeAppsSDK()
 
