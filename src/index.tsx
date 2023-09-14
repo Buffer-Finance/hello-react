@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom'
 import SafeProvider from '@safe-global/safe-apps-react-sdk'
-
-import App from './App'
+import { SafeApp } from './App'
 
 ReactDOM.render(
   <SafeProvider
@@ -11,7 +10,7 @@ ReactDOM.render(
     }}
     loader={<>hello</>}
   >
-    <App />
+    <SafeApp />
   </SafeProvider>,
   document.getElementById('root'),
 )
