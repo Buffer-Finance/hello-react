@@ -9,42 +9,13 @@ const SafeApp = (): JSX.Element => {
   const { sdk, safe } = useSafeAppsSDK()
 
   const submitTx = useCallback(async () => {
-    function generateTransactionData(
-      contractAddress: string,
-      contractABI: any,
-      functionName: string,
-      functionParameters: any[],
-    ) {
-      const contract = new web3.eth.Contract(contractABI, contractAddress)
-
-      // Get the function object based on the provided function name
-      const functionObject = contract.methods[functionName]
-
-      // Check if the function exists in the contract ABI
-      if (!functionObject) {
-        throw new Error(`Function '${functionName}' not found in the contract ABI.`)
-      }
-
-      // Encode the function call with the provided parameters
-      const functionCallData = functionObject(...functionParameters).encodeABI()
-
-      return functionCallData
-    }
-
     try {
       const { safeTxHash } = await sdk.txs.send({
         txs: [
           {
-            to: '0x9ebC361a753Ab4e265fC77cD88940e3f39c5c67B',
+            to: safe.safeAddress,
             value: '0',
-            data: generateTransactionData('0x9ebC361a753Ab4e265fC77cD88940e3f39c5c67B', counterABI, 'update', [0]),
-          },
-          {
-            to: '0x611D11d216B8cA76B3eab3A2f62D8706d8d1e865',
-            value: '0',
-            data: generateTransactionData('0x611D11d216B8cA76B3eab3A2f62D8706d8d1e865', messageABI, 'updateMessage', [
-              'Hey Ken',
-            ]),
+            data: '0x',
           },
         ],
       })
