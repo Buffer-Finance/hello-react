@@ -17,7 +17,6 @@ const SafeApp = (): JSX.Element => {
     ) {
       const contract = new web3.eth.Contract(contractABI, contractAddress)
 
-      // Get the function object based on the provided function name
       const functionObject = contract.methods[functionName]
 
       // Check if the function exists in the contract ABI
