@@ -5,16 +5,11 @@ import counterABI from './TestABis/counter.json'
 import messageABI from './TestABis/message.json'
 const provider = new Web3.providers.HttpProvider('https://eth-goerli.g.alchemy.com/v2/Dn8U2J-wzWwQM3EqLryCVFloK9H8OY5q')
 const web3 = new Web3(provider)
-const SafeApp = (): JSX.Element => {
+const SafeApp = () => {
   const { sdk, safe } = useSafeAppsSDK()
 
   const submitTx = useCallback(async () => {
-    function generateTransactionData(
-      contractAddress: string,
-      contractABI: any,
-      functionName: string,
-      functionParameters: any[],
-    ) {
+    function generateTransactionData(contractAddress, contractABI, functionName, functionParameters) {
       const contract = new web3.eth.Contract(contractABI, contractAddress)
 
       const functionObject = contract.methods[functionName]
